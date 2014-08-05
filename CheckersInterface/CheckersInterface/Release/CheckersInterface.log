@@ -1,0 +1,66 @@
+﻿Build started 1/5/2014 10:16:26 PM.
+     1>Project "C:\Users\Abhinav\Documents\Visual Studio 2013\Projects\CheckersInterface\CheckersInterface\CheckersInterface.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\\" /AI"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral" /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Facades\\" /Zi /clr /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _UNICODE /D UNICODE /EHa /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" /analyze- /errorReport:prompt /clr:nostdlib MyForm.cpp
+         MyForm.cpp
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\Player_11.cpp(304): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\Player_21.cpp(302): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(689): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : see declaration of 'strcpy'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(690): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(118) : see declaration of 'strcat'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(717): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : see declaration of 'strcpy'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(718): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(118) : see declaration of 'strcat'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(813): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : see declaration of 'strcpy'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(814): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(118) : see declaration of 'strcat'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(821): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : see declaration of 'strcpy'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(822): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(118) : see declaration of 'strcat'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(829): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : see declaration of 'strcpy'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(830): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(118) : see declaration of 'strcat'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(1218): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : see declaration of 'strcpy'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(1219): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(118) : see declaration of 'strcat'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(1239): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : see declaration of 'strcpy'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(1240): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(118) : see declaration of 'strcat'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(1260): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : see declaration of 'strcpy'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(1261): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(118) : see declaration of 'strcat'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(1365): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : see declaration of 'strcpy'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(1366): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(118) : see declaration of 'strcat'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(1374): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : see declaration of 'strcpy'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(1375): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(118) : see declaration of 'strcat'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(1383): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : see declaration of 'strcpy'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(1384): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(118) : see declaration of 'strcat'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(1396): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(112) : see declaration of 'strcpy'
+     1>c:\users\abhinav\documents\visual studio 2013\projects\checkersinterface\checkersinterface\MyForm.h(1397): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\string.h(118) : see declaration of 'strcat'
+     1>MyForm.cpp(19): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\stdio.h(226) : see declaration of 'freopen'
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Abhinav\Documents\Visual Studio 2013\Projects\CheckersInterface\Release\CheckersInterface.exe" /INCREMENTAL:NO /NOLOGO /ASSEMBLYRESOURCE:Release\CheckersInterface.MyForm.resources /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Abhinav\Documents\Visual Studio 2013\Projects\CheckersInterface\Release\CheckersInterface.pdb" /TLBID:1 /DYNAMICBASE /FIXED:NO /NXCOMPAT /MACHINE:X86 /SAFESEH Release\MyForm.obj
+         "Release\.NETFramework,Version=v4.5.AssemblyAttributes.obj"
+         CheckersInterface.vcxproj -> C:\Users\Abhinav\Documents\Visual Studio 2013\Projects\CheckersInterface\Release\CheckersInterface.exe
+     1>Done Building Project "C:\Users\Abhinav\Documents\Visual Studio 2013\Projects\CheckersInterface\CheckersInterface\CheckersInterface.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.23
