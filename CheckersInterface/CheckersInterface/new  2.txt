@@ -1,0 +1,78 @@
+Reversi is a board game for 2 playersBandWwho take turns placing black and white coins on an 8x8 board. The objective of the game is to flip as many of the opponentcoins while blocking your opponent from flipping your coins. In order to flip a coin, you must first trap it between two of your coins, horizontally, vertically or diagonally. The game begins with four coins, two black and two white, placed in the center of the board.
+Black goes first. The red dots in the image below indicate the possible positions of placing a coin by the current player. Black places a coin on the board in such a way that it traps one or more white coins between two of the blackcoins. This placement can be horizontal, vertical or diagonal as shown. When the black coin is placed, the white coins between the newly placed black coinare flipped over and becomepart of the black forces.
+NOTE:The flipping of coins is only with respect to the newly placed coin.
+RULES-REVERSI
+You may want to play this game online to get a hang of the game http://hewgill.com/othello/ The rules of the game can be studied from the following link http://en.wikipedia.org/wiki/Reversi
+Reversi is a board game for 2 playersBandWwho take turns placing black and white coins on an 8x8 board. The objective of the game is to flip as many of the opponentcoins while blocking your opponent from flipping your coins. In order to flip a coin, you must first trap it between two of your coins, horizontally, vertically or diagonally. The game begins with four coins, two black and two white, placed in the center of the board.
+Black goes first. The red dots in the image below indicate the possible positions of placing a coin by the current player. Black places a coin on the board in such a way that it traps one or more white coins between two of the blackcoins. This placement can be horizontal, vertical or diagonal as shown. When the black coin is placed, the white coins between the newly placed black coinare flipped over and becomepart of the black forces.
+NOTE:The flipping of coins is only with respect to the newly placed coin.
+RULES-REVERSI
+You may want to play this game online to get a hang of the game http://hewgill.com/othello/ The rules of the game can be studied from the following link http://en.wikipedia.org/wiki/Reversi
+Reversi is a board game for 2 playersBandWwho take turns placing black and white coins on an 8x8 board. The objective of the game is to flip as many of the opponentcoins while blocking your opponent from flipping your coins. In order to flip a coin, you must first trap it between two of your coins, horizontally, vertically or diagonally. The game begins with four coins, two black and two white, placed in the center of the board.
+Black goes first. The red dots in the image below indicate the possible positions of placing a coin by the current player. Black places a coin on the board in such a way that it traps one or more white coins between two of the blackcoins. This placement can be horizontal, vertical or diagonal as shown. When the black coin is placed, the white coins between the newly placed black coinare flipped over and becomepart of the black forces.
+NOTE:The flipping of coins is only with respect to the newly placed coin.
+PLAYING INSTRUCTIONS
+The game will be played on an 8X8 matrix with 0 based index beginning from the top left corner of the matrix.
+Player 1 will be given the black coin. Player 2 will be given the white coin.
+Player 1will always start the game.
+The game requires the player to make an algorithm which computes two integers specifying the locationon the gridwhere the coin will be placed in the player’s turn.
+Forexample:
+Current State of the grid:
+--------
+--------
+--------
+---WB---
+---BW---
+--------
+--------
+--------
+The algorithm by player 1 computestwointegers:5 3 Then the next state of the grid will be:
+struct coord{ int x1; int y1; };
+--------
+--------
+---B----
+---BB---
+---BW---
+--------
+--------
+--------
+However, you don’t have toreturn two integers separately, instead they should be returned as parts of a structure defined in the REVERSI_NEW.cpp file.
+No need to define it in your .cpp file. You can use it directly bydeclaring an object of the structure in your file.
+WINNING
+The aim of the game is to destroy all the pieces of the second player.
+The game continues till all the the maximum number of iterations are reached, or all the opposition pieces are destroyed, whichever occurs first.
+If the iterations are complete, without destroying the other player completely then the winner is decided by these rules.
+The rules are listed in order of preference.
+1. Player having maximum pieces remaining
+2. The player having minimum number of wrong moves.
+
+If the game is still left undecided, the game is declared a draw.
+
+CODING INSTRUCTIONS
+You are given 5 files:Checkers.cpp, Checkers.h, Output.h, Player_1.cpp and Player_2.cpp
+Checkers.h:is the file which contains the declarations of all the functions. This is coded by us (the organizers) so you don’t need to worry about this.
+Checkers.cpp:is the file which will validate your moves and make the necessary changes in the grid and will also keep track of how many black and white chips are placed on the board at any point of time.It will be the ultimate authority which will control the whole game and thus take care that all rules are being followed during the fight. This contains the declarations of all the functions defined in Checkers.h .This is coded by us (the organizers) so you don’t need to worry about this.
+Output.h : is the header file which contains the output format of the function. It includes the output structure and is included in the file which you have to code. This is coded by us (the organizers) so you don’t need to worry about this. 
+Player_1.cpp:is the file you have to code. The function prototype is given in the sample code. You have to make sure that you save this file name as <YourTeamName>.cpp and the main function of the programme must also be named <YourTeamName>. Also, the function <YourTeamName> would be called each and every time the program is executed. And you can only access the parameters which will be passed to <YourTeamName> function. Trying to access any other variable/methods from the program will lead to immediate disqualification. The output of this function is a structure defined in Output.h
+Player_2.cpp: is a sample opponent file from which you can test your code.
+
+NOTE:-The parameters that will be passed to <YourTeamName> function from the central program will be the current state of the board in the form of an 8X8 Matrix, along with the current no. of wrong moves, if it a continued chance along with cordinates of continued cell, the player ID, an array of valid moves available and the iterations remaining.
+Also, while changing your file, also change the name of header like from
+#include"Player_1.cpp" to: #include"<YourTeamName>.cpp” eg. #include "TeamCoders.cpp"
+
+PARTICIPATION
+? Each Team comprises of at most two members. ? Team members can be from same/different schools/colleges. ? Solutions have to be coded in "C++". No other language is allowed. ? All entries sent in will become the property of IEEE-DTU society. ? The IEEE-DTU society reserves the right to modify the contest rules without any prior notice. ? One person can be a member of at most one team. If we find the same person in more than one team, all the teams of which he/she is a member will be disqualified from the contest. ? Only one entry is allowed per team.
+GROUNDS FOR DISQUALIFICATION
+? Teams having identical source code will be disqualified from the contest. ?
+ Attempt to hack or improper use of the coding arena will lead to disqualification. ? 
+ Attempt to change the code from the other files than specified.
+ Attempt to access data from other files which is prohibited.
+ Teams submittingmalicious codewill be disqualified. ? 
+ The IEEE, DTU Student Branch reserves the right to disqualify any contestant/team without citing any reason whatsoever. 
+ No further inquiries will be entertained on this matter.
+GENERAL
+?Updates regarding the contest rules will be posted on the site/forum. ? 
+The rules are subject to change and no questions will be entertained for the same. ? 
+Keep checking the site/forum for updates. ? Details regarding submission of entries will be posted on the site/forum. For more details: www.troika.dcetech.com
+Coding team: All queries should be directed to the coding team Nimish Aggarwal: 9650908927 Abhishek Jain: 9899590749
+Contact us at: bots@dcetech.com

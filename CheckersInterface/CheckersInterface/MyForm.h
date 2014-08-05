@@ -15,8 +15,8 @@
 
 void Player_1Wrapper(void *_args)
 {
-//	time
-//	printf("%s: void Player_1Wrapper(void *_args)\n", ctime(&(time(0))));
+	//	time
+	//	printf("%s: void Player_1Wrapper(void *_args)\n", ctime(&(time(0))));
 	Param *_arg = (Param*)_args;
 	/*	cout << (*arg)._pContinued;
 	cout << (*arg)._pIter;
@@ -36,10 +36,8 @@ void Player_1Wrapper(void *_args)
 	}
 	*/
 
-	_flag = 0;
-	_move = Player_1((*arg)._pBoard, (*arg)._pContinued, (*arg)._pIter, (*arg)._pRemaining, (*arg)._pWrong, (*arg)._pXCont, (*arg)._pYCont,1);
+	_move = Player_1((*arg)._pBoard, (*arg)._pContinued, (*arg)._pIter, (*arg)._pRemaining, (*arg)._pWrong, (*arg)._pXCont, (*arg)._pYCont, 1);
 	printf("Move by player 1:(%d,%d) to (%d,%d)\n", _move._xOld, _move._yOld, _move._xNew, _move._yNew);
-	_flag = 1;
 }
 
 void Player_2Wrapper(void *_args)
@@ -48,10 +46,8 @@ void Player_2Wrapper(void *_args)
 
 	Param *_arg = (Param*)_args;
 
-	_flag = 0;
-	_move = Player_2((*arg)._pBoard, (*arg)._pContinued, (*arg)._pIter, (*arg)._pRemaining, (*arg)._pWrong, (*arg)._pXCont, (*arg)._pYCont,2);
+	_move = Player_2((*arg)._pBoard, (*arg)._pContinued, (*arg)._pIter, (*arg)._pRemaining, (*arg)._pWrong, (*arg)._pXCont, (*arg)._pYCont, 2);
 	printf("Move by player 2:(%d,%d) to (%d,%d)\n", _move._xOld, _move._yOld, _move._xNew, _move._yNew);
-	_flag = 1;
 }
 
 
@@ -116,13 +112,13 @@ namespace CheckersInterface {
 	private: System::Windows::Forms::ToolStripMenuItem^  MenuExit;
 
 	private: System::Windows::Forms::ToolStripMenuItem^  menuNextMove;
-	private: System::Windows::Forms::Label^  lblWinner;
+
 	private: System::Windows::Forms::ToolStripMenuItem^  internalDataToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  menuWrong1;
 	private: System::Windows::Forms::ToolStripMenuItem^  menuWrong2;
 	private: System::Windows::Forms::ToolStripMenuItem^  menuContinued;
 	private: System::Windows::Forms::ToolStripMenuItem^  menuWinner;
-	private: System::Windows::Forms::Label^  lblData;
+
 	private: System::Windows::Forms::ToolStripMenuItem^  optionsToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  finalsToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  menuFinals;
@@ -143,10 +139,10 @@ namespace CheckersInterface {
 	private: bool	isFinal;
 	private: bool	isSemiFinal;
 	private: bool	isKnockout;
-			 bool	soundOn;
-			 bool	soundPlaying;
-			 SoundPlayer ^sound;
-			 SoundPlayer ^messageSound;
+	private: bool	soundOn;
+	private: bool	soundPlaying;
+	private: SoundPlayer ^sound;
+	private: SoundPlayer ^messageSound;
 	private: System::Windows::Forms::Label^  tb_lblCurrentPLayer;
 	private: String^ path_m;
 	private: System::Windows::Forms::ImageList^  imgList2;
@@ -200,8 +196,6 @@ namespace CheckersInterface {
 			this->soundToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuSoundOn = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuSoundOff = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->lblWinner = (gcnew System::Windows::Forms::Label());
-			this->lblData = (gcnew System::Windows::Forms::Label());
 			this->lblStatus = (gcnew System::Windows::Forms::Label());
 			this->tb_lblCurrentPLayer = (gcnew System::Windows::Forms::Label());
 			this->imgList2 = (gcnew System::Windows::Forms::ImageList(this->components));
@@ -505,30 +499,6 @@ namespace CheckersInterface {
 			this->menuSoundOff->Text = L"O&ff";
 			this->menuSoundOff->Click += gcnew System::EventHandler(this, &MyForm::menuSoundOff_Click);
 			// 
-			// lblWinner
-			// 
-			this->lblWinner->AutoSize = true;
-			this->lblWinner->BackColor = System::Drawing::Color::Transparent;
-			this->lblWinner->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 26.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lblWinner->ForeColor = System::Drawing::Color::Blue;
-			this->lblWinner->Location = System::Drawing::Point(675, 458);
-			this->lblWinner->Name = L"lblWinner";
-			this->lblWinner->Size = System::Drawing::Size(0, 39);
-			this->lblWinner->TabIndex = 6;
-			// 
-			// lblData
-			// 
-			this->lblData->AutoSize = true;
-			this->lblData->BackColor = System::Drawing::Color::Transparent;
-			this->lblData->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lblData->ForeColor = System::Drawing::Color::Green;
-			this->lblData->Location = System::Drawing::Point(690, 40);
-			this->lblData->Name = L"lblData";
-			this->lblData->Size = System::Drawing::Size(0, 24);
-			this->lblData->TabIndex = 7;
-			// 
 			// lblStatus
 			// 
 			this->lblStatus->BackColor = System::Drawing::Color::Transparent;
@@ -566,8 +536,6 @@ namespace CheckersInterface {
 			this->ClientSize = System::Drawing::Size(950, 700);
 			this->Controls->Add(this->tb_lblCurrentPLayer);
 			this->Controls->Add(this->lblStatus);
-			this->Controls->Add(this->lblData);
-			this->Controls->Add(this->lblWinner);
 			this->Controls->Add(this->lblPlayer2Pcs);
 			this->Controls->Add(this->lblPlayer1Pcs);
 			this->Controls->Add(this->tableLayoutPanel1);
@@ -591,815 +559,814 @@ namespace CheckersInterface {
 
 		}
 #pragma endregion
-		
+
 	private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
-			//LPTSTR WINAPI 
-//			cout<<GetCommandLine()<<"OVER";
-			printf("private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e)\n");
-			
-			isNextMove = false;
-			Checkers.getBoard(_arr);
-		
-			for (int i = 0; i < 8; i++)
-			{
-				for (int j = 0; j < 8; j++)
-				{
-					cout << _arr[i][j]._status;
-				}
+				 //LPTSTR WINAPI 
+				 //			cout<<GetCommandLine()<<"OVER";
+				 printf("private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e)\n");
 
-				cout << "\n";
-			}
+				 isNextMove = false;
+				 Checkers.getBoard(_arr);
 
-			for (int i = 0; i < 8; i++)
-			{
-				for (int j = 0; j < 8; j++)
-				{
-					pb[i,j]  = gcnew PictureBox();
-					pb[i,j]->Dock = DockStyle::Fill;
-					pb[i,j]->SizeMode = PictureBoxSizeMode::Normal;
+				 for (int i = 0; i < 8; i++)
+				 {
+					 for (int j = 0; j < 8; j++)
+					 {
+						 cout << _arr[i][j]._status;
+					 }
 
-					if ((i + j) % 2 == 1)
-					{
-						pb[i,j]->Image = imgList->Images[3];
-						tableLayoutPanel1->Controls->Add(pb[i,j], j, i);
-					}
+					 cout << "\n";
+				 }
 
-					else
-					{
-						pb[i, j]->Image = imgList->Images[0];
-						tableLayoutPanel1->Controls->Add(pb[i, j], j, i);
-					}
-				}
-			}
+				 for (int i = 0; i < 8; i++)
+				 {
+					 for (int j = 0; j < 8; j++)
+					 {
+						 pb[i, j] = gcnew PictureBox();
+						 pb[i, j]->Dock = DockStyle::Fill;
+						 pb[i, j]->SizeMode = PictureBoxSizeMode::Normal;
 
-			for (int i = 0; i < ROWS; i++)
-			{
-				for (int j = 0; j < COLUMNS; j++)
-				{
-					if ((i + j) % 2 != 0)
-						continue;
+						 if ((i + j) % 2 == 1)
+						 {
+							 pb[i, j]->Image = imgList->Images[3];
+							 tableLayoutPanel1->Controls->Add(pb[i, j], j, i);
+						 }
 
-					if (_arr[i][j]._status == 1)
-					{
-						if (_arr[i][j]._flag == false)
-						{
-							pb[i, j]->Image = imgList->Images[1];
-							tableLayoutPanel1->Controls->Add(pb[i, j], j, i);
-						}
-						else
-						{
-							pb[i, j]->Image = imgList->Images[2];
-							tableLayoutPanel1->Controls->Add(pb[i, j], j, i);
-						}
+						 else
+						 {
+							 pb[i, j]->Image = imgList->Images[0];
+							 tableLayoutPanel1->Controls->Add(pb[i, j], j, i);
+						 }
+					 }
+				 }
 
-					}
-					else if (_arr[i][j]._status == 2)
-					{
-						if (_arr[i][j]._flag == false)
-						{
-							pb[i, j]->Image = imgList->Images[4];
-							tableLayoutPanel1->Controls->Add(pb[i, j], j, i);
-						}
-						else
-						{
-							pb[i, j]->Image = imgList->Images[5];
-							tableLayoutPanel1->Controls->Add(pb[i, j], j, i);
-						}
+				 for (int i = 0; i < ROWS; i++)
+				 {
+					 for (int j = 0; j < COLUMNS; j++)
+					 {
+						 if ((i + j) % 2 != 0)
+							 continue;
 
-					}
+						 if (_arr[i][j]._status == 1)
+						 {
+							 if (_arr[i][j]._flag == false)
+							 {
+								 pb[i, j]->Image = imgList->Images[1];
+								 tableLayoutPanel1->Controls->Add(pb[i, j], j, i);
+							 }
+							 else
+							 {
+								 pb[i, j]->Image = imgList->Images[2];
+								 tableLayoutPanel1->Controls->Add(pb[i, j], j, i);
+							 }
 
-					else if (_arr[i][j]._status == 0)
-					{
-						if (_arr[i][j]._flag != 0)
-							MessageBox::Show("Flag not zero", "Internal Message");
+						 }
+						 else if (_arr[i][j]._status == 2)
+						 {
+							 if (_arr[i][j]._flag == false)
+							 {
+								 pb[i, j]->Image = imgList->Images[4];
+								 tableLayoutPanel1->Controls->Add(pb[i, j], j, i);
+							 }
+							 else
+							 {
+								 pb[i, j]->Image = imgList->Images[5];
+								 tableLayoutPanel1->Controls->Add(pb[i, j], j, i);
+							 }
 
-						pb[i, j]->Image = imgList->Images[0];
-						tableLayoutPanel1->Controls->Add(pb[i, j], j, i);
-					}
+						 }
 
-					else
-					{
-						MessageBox::Show("Status not zero", "Internal Message");
-						printf("Status not zero", "Internal Message\n");
-					}
+						 else if (_arr[i][j]._status == 0)
+						 {
+							 if (_arr[i][j]._flag != 0)
+								 MessageBox::Show("Flag not zero", "Internal Message");
 
-				}
-			}
-	
-			strcpy(_pathTemp, _path);
-			path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\Message.wav"));
-			messageSound = gcnew SoundPlayer(path_m);
-			messageSound->Play();
+							 pb[i, j]->Image = imgList->Images[0];
+							 tableLayoutPanel1->Controls->Add(pb[i, j], j, i);
+						 }
+
+						 else
+						 {
+							 MessageBox::Show("Status not zero", "Internal Message");
+							 printf("Status not zero", "Internal Message\n");
+						 }
+
+					 }
+				 }
+
+				 strcpy(_pathTemp, _path);
+				 path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\Message.wav"));
+				 messageSound = gcnew SoundPlayer(path_m);
+				 messageSound->Play();
 
 
-			 lblPlayer1Pcs->Text = Convert::ToString(Checkers.getRemaining1());
-			 lblPlayer2Pcs->Text = Convert::ToString(Checkers.getRemaining2());
-			 tbMoves->Text = Convert::ToString(ITERATION_MAX - Checkers.getIter());
-			 
-			 if (Checkers.getPlayer()==1)
-				 tb_lblCurrentPLayer->Image = imgList2->Images[0];
-			 else
-				 tb_lblCurrentPLayer->Image = imgList2->Images[1];
+				 lblPlayer1Pcs->Text = Convert::ToString(Checkers.getRemaining1());
+				 lblPlayer2Pcs->Text = Convert::ToString(Checkers.getRemaining2());
+				 tbMoves->Text = Convert::ToString(ITERATION_MAX - Checkers.getIter());
 
-			 menuKnockout->Checked = true;
-			 menuSemiFinals->Checked = false;
-			 menuFinals->Checked = false;
+				 if (Checkers.getPlayer() == 1)
+					 tb_lblCurrentPLayer->Image = imgList2->Images[0];
+				 else
+					 tb_lblCurrentPLayer->Image = imgList2->Images[1];
 
-			 isKnockout = true;
-			 isSemiFinal = false;
-			 isFinal = false;
+				 menuKnockout->Checked = true;
+				 menuSemiFinals->Checked = false;
+				 menuFinals->Checked = false;
 
-			 lblStatus->Text = "Knockout!";
+				 isKnockout = true;
+				 isSemiFinal = false;
+				 isFinal = false;
 
-			 soundOn = true;
-			 soundPlaying = false;
+				 lblStatus->Text = "Knockout!";
 
-			 strcpy(_pathTemp, _path);
-			 path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\KnockoutLoad.wav"));
-			 sound = gcnew SoundPlayer(path_m);
-			 sound->PlayLooping();
+				 soundOn = true;
+				 soundPlaying = false;
+
+				 strcpy(_pathTemp, _path);
+				 path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\KnockoutLoad.wav"));
+				 sound = gcnew SoundPlayer(path_m);
+				 sound->PlayLooping();
 	}
 
 	public: void updateScreen()
 	{
 
-		Checkers.getBoard(_arr);
-		printf("public: void updateScreen()\n");
-		// update this for updating only 3 values i.e old, curr, deleted
-		
-		if (!isNextMove)
-		{
-			btnNextMove->Text = "Next Move!";
-			isNextMove = true;
-		}
+				Checkers.getBoard(_arr);
+				printf("public: void updateScreen()\n");
+				// update this for updating only 3 values i.e old, curr, deleted
 
-		for (int i = 0; i < 8; i++)
-		{
-			for (int j = 0; j < 8; j++)
-			{
-				cout << _arr[i][j]._status;
-			}
-
-			cout << "\n";
-		}
-
-		markCells(_move._xOld, _move._yOld, 0);
-		markCells(_move._xNew, _move._yNew, 0);
-
-		if (_deleted)
-		{
-			_deleted = false;
-			markCells(_xDel, _yDel, 0);
-		}
-
-		lblPlayer1Pcs->Text = Convert::ToString(Checkers.getRemaining1());
-		lblPlayer2Pcs->Text = Convert::ToString(Checkers.getRemaining2());
-		tbMoves->Text = Convert::ToString(ITERATION_MAX-Checkers.getIter());
-
-		if (Checkers.getPlayer() == 1)
-			tb_lblCurrentPLayer->Image = imgList2->Images[0];
-		else
-			tb_lblCurrentPLayer->Image = imgList2->Images[1];
-
-
-		if (!isNextMove)
-		{
-			btnNextMove->Text = "Next Move!";
-			isNextMove = true;
-		}
-
-	}
-	
-	void execute() 
-	{
-		
-		printf("void execute()\n");
-
-		if (Checkers.getLost() == 1)
-		{
-			playWinner();
-			MessageBox::Show("Player 1 has no pieces remaining. \nCongratulations, Player 2 Won!", "Game over!");
-			printf("Player 1 has no pieces remaining. \nCongratulations, Player 2 Won!\n");
-			lblWinner->Text = "Player 2 Won!";
-			btnNextMove->Enabled = false;
-			return;
-		}
-
-		if (Checkers.getLost() == 2)
-		{
-			playWinner();
-			MessageBox::Show("Player 2 has no pieces remaining. \nCongratulations, Player 1 Won!", "Game over!");
-			printf("Player 2 has no pieces remaining. \nCongratulations, Player 1 Won!\n");
-			lblWinner->Text = "Player 1 Won!";
-			btnNextMove->Enabled = false;
-			return;
-		}
-
-		if (!isNextMove)
-		{
-			MessageBox::Show("Game started. All the best!","Lets Start!");
-			sound->Stop();
-			soundPlaying = false;
-		}
-		
-		cout << soundOn << soundPlaying;
-
-		if (soundOn)
-		{
-			if (!soundPlaying)
-			{
-				if (isFinal)
+				if (!isNextMove)
 				{
-					strcpy(_pathTemp, _path);
-					path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\FinalsPlay.wav"));
-					sound = gcnew SoundPlayer(path_m);
-					sound->PlayLooping();
+					btnNextMove->Text = "Next Move!";
+					isNextMove = true;
 				}
 
-				else if (isSemiFinal)
-				{
-					strcpy(_pathTemp, _path);
-					path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\SemiFinalsPlay.wav"));
-					sound = gcnew SoundPlayer(path_m);
-					sound->PlayLooping();
-				}
-
-				else if (isKnockout)
-				{
-					strcpy(_pathTemp, _path);
-					path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\KnockoutPlay.wav"));
-					sound = gcnew SoundPlayer(path_m);
-					sound->PlayLooping();
-				}
-
-				soundPlaying = true;
-			}
-		}
-		else
-		{
-			if (soundPlaying)
-			{
-				sound->Stop();
-				soundPlaying = false;
-			}
-		}
-
-		if (!isMoveAvailable())
-		{
-			btnNextMove->Enabled = false;
-			if (Checkers.getPlayer() == 1)
-			{
-				playWinner();
-				MessageBox::Show("Player 1 has no valid move remaining. \nCongratulations, Player 2 Won!", "Game over!");
-				printf("Player 1 has no valid move remaining. \nCongratulations, Player 2 Won!\n");
-				lblWinner->Text = "Player 2 Won!";
-				Checkers.setLost(1);
-				return;
-			}
-
-			if (Checkers.getPlayer() == 2)
-			{
-				playWinner();
-				MessageBox::Show("Player 2 has no valid move remaining. \nCongratulations, Player 1 Won!", "Game over!");
-				printf("Player 2 has no valid move remaining. \nCongratulations, Player 1 Won!\n");
-				lblWinner->Text = "Player 1 Won!";
-				Checkers.setLost(2);
-				return;
-			}
-
-			else
-				return assert(0);
-
-		}
-
-		if (Checkers.getIter())
-		{
-			Checkers.getBoard(_arr);
-
-			for (int i = 0; i < 8; i++)
-			{
-				for (int j = 0; j < 8; j++)
-				{
-					cout << _arr[i][j]._status << " ";
-				}
-				cout << "\n";
-			}
-
-			(*arg).copyBoard(_arr);
-			(*arg)._pContinued = Checkers.getContinued();
-			(*arg)._pIter = Checkers.getIter();
-			(*arg)._pRemaining = Checkers.getRemaining();
-			(*arg)._pWrong = Checkers.getWrong();
-			(*arg)._pXCont = Checkers.getXCont();
-			(*arg)._pYCont = Checkers.getYCont();
-
-			_flag = 0;
-
-
-			if (Checkers.getPlayer() == 1)
-			{
-				printf("Calling thread for player1\n");
-
-				cout <<"Thread Handle: "<< (hThread = (HANDLE)_beginthread(Player_1Wrapper, 0, (void*)arg))<<"\n";
-
-				Sleep(TIME_MAX + 5);
-
-				if (_flag == 0)
-				{
-					playWinner();
-					btnNextMove->Enabled = false;
-					MessageBox::Show("Time limit exceeded by Player 1.\nCongratulations, Player 2 won!!!","Game Over!!");
-					printf("Time limit exceeded by Player 1.\nCongratulations, Player 2 won!!!\n");
-					TerminateThread(hThread, 0);
-					CloseHandle(hThread);
-					Checkers.setLost(1);
-					lblWinner->Text = "Player 2 Won!";
-					return;
-				}				
-
-				markCells(_move._xOld, _move._yOld, 1);
-				markCells(_move._xNew, _move._yNew, 2);
-
-				if (!Checkers.validateMove(_move._xNew, _move._yNew, _move._xOld, _move._yOld))
-				{
-
-					if (Checkers.getLost() == 1)
-					{
-						playWinner();
-						MessageBox::Show("Invalid Move by Player 1. Maximum number of invalid moves reached.\nCongratulations, Player 2 won", "Game Over!!");
-						printf("Invalid Move by Player 1. Maximum number of invalid moves reached.\nCongratulations, Player 2 won\n");
-						btnNextMove->Enabled = false;
-						lblWinner->Text = "Player 2 Won!";
-						updateScreen();
-						Checkers.setLost(1);
-						return;
-					}
-					
-					MessageBox::Show("Invalid Move by Player 1.", "Warning!!");
-					printf("Invalid Move by Player 1.\n");
-					updateScreen();
-					return;
-				}
-			
-				cout << "Valid Move for player 1\n";
-				Sleep(DISPLAY_TIME_VALID);
-				updateScreen();
-				return;
-			
-			}
-
-			else if (Checkers.getPlayer() == 2)
-			{
-				printf("Calling thread for player2\n");
-
-				cout <<"Thread handle: "<< (hThread = (HANDLE)_beginthread(Player_2Wrapper, 0, (void*)arg))<<"\n";
-
-				Sleep(TIME_MAX + 5);
-
-				if (_flag == 0)
-				{
-					playWinner();
-					btnNextMove->Enabled = false;
-					MessageBox::Show("Time limit exceeded by Player 2.\nCongratulations, Player 1 won!!! ", "Game Over!!");
-					printf("Time limit exceeded by Player 2.\nCongratulations, Player 1 won!!! \n");
-					TerminateThread(hThread, 0);
-					CloseHandle(hThread);
-					lblWinner->Text = "Player 1 Won!";
-					Checkers.setLost(2);
-					return;
-				}
-
-				markCells(_move._xOld, _move._yOld, 1);
-				markCells(_move._xNew, _move._yNew, 2);
-
-				if (!Checkers.validateMove(_move._xNew, _move._yNew, _move._xOld, _move._yOld))
-				{
-					if (Checkers.getLost() == 2)
-					{
-						playWinner();
-						MessageBox::Show("Invalid Move by Player 2. Maximum number of invalid moves reached.\nCongratulations, Player 1 won", "Game Over!!");
-						printf("Invalid Move by Player 2. Maximum number of invalid moves reached.\nCongratulations, Player 1 won\n");
-						btnNextMove->Enabled = false;
-						updateScreen();
-						lblWinner->Text = "Player 1 Won!";
-						return;
-					}
-					
-					MessageBox::Show("Invalid Move by Player 2.", "Warning!!");
-					printf("Invalid Move by Player 2.\n");
-					updateScreen();
-					return;
-				}
-				
-				cout << "Valid Move for player 2\n";
-				Sleep(DISPLAY_TIME_VALID);
-				updateScreen(); 
-				return;
-			}
-
-			else
-				return assert(0);
-		}
-
-		btnNextMove->Enabled = false;
-
-		if (Checkers.getRemaining1() > Checkers.getRemaining2())
-		{
-			playWinner();
-			MessageBox::Show("Player 1 has more pieces remaining. \nCongratulations, Player 2 Won!", "Game over!");
-			printf("Player 1 has more pieces remaining. \nCongratulations, Player 2 Won!\n");
-			lblWinner->Text = "Player 2 Won!";
-			Checkers.setLost(1);
-		}
-
-		else if (Checkers.getRemaining1()<Checkers.getRemaining2())
-		{
-			playWinner();
-			MessageBox::Show("Player 2 has more pieces remaining. \nCongratulations, Player 1 Won!", "Game over!");
-			printf("Player 2 has more pieces remaining. \nCongratulations, Player 1 Won!\n");
-			lblWinner->Text = "Player 1 Won!";
-			Checkers.setLost(2);
-		}
-
-		else if (Checkers.getWrong1()>Checkers.getWrong2())
-		{
-			playWinner();
-			MessageBox::Show("Player 2 had less wrong moves. \nCongratulations, Player 2 Won!", "Game over!");
-			printf("Player 2 had less wrong moves. \nCongratulations, Player 2 Won!\n");
-			lblWinner->Text = "Player 2 Won!";
-			Checkers.setLost(1);
-		}
-		
-		else if (Checkers.getWrong1() < Checkers.getWrong2())
-		{
-			playWinner();
-			MessageBox::Show("Player 1 had less wrong moves. \nCongratulations, Player 1 Won!", "Game over!");
-			printf("Player 1 had less wrong moves. \nCongratulations, Player 1 Won!\n");
-			lblWinner->Text = "Player 1 Won!";
-			Checkers.setLost(2);
-		}
-
-		else
-		{
-			playDraw();
-			MessageBox::Show("Maximum moves reached. \nWell Played! It's a draw!", "Game over!");
-			printf("Maximum moves reached. \nWell Played! It's a draw!\n");
-			lblWinner->Text = "It's a Draw!";
-		}
-	}
-
-	void markCells(int _x, int _y, int _key)
-	{
-		Checkers.getBoard(_arr);
-		printf("void markCells(int _x(%d), int _y(%d), int _key(%d))\n",_x,_y,_key);
-
-		if (_x<0 || _y<0 || _key<0 || _x>7 || _y>7 || _key>2 )
-		{
-			MessageBox::Show("Indexes recieved are out of bounds","Warning");
-			return;
-		}
-
-		if ((_x + _y) % 2 == 1)
-		pb[_x, _y]->Image = imgList->Images[3+(_key*6)];
-
-		else if (_arr[_x][_y]._status == 1)
-		{
-			if (_arr[_x][_y]._flag == false)
-			{
-				cout << 1 + (_key * 6);
-				cout << "\na1\n";
-				pb[_x, _y]->Image = imgList->Images[1 + (_key * 6)];
-//				tableLayoutPanel1->Controls->Add(pb[_x, _y], _y, _x);
-			}
-			else
-			{
-				cout << 2 + (_key * 6);
-				cout << "\na2\n";
-				pb[_x, _y]->Image = imgList->Images[2 + (_key * 6)];
-//				tableLayoutPanel1->Controls->Add(pb[_x, _y], _y, _x);
-			}
-
-		}
-
-		else if (_arr[_x][_y]._status == 2)
-		{
-			if (_arr[_x][_y]._flag == false)
-			{
-				cout << 4 + (_key * 6);
-				cout << "\na3\n";
-				pb[_x, _y]->Image = imgList->Images[4 + (_key * 6)];
-//				tableLayoutPanel1->Controls->Add(pb[_x, _y], _y, _x);
-			}
-			else
-			{
-				cout << 5+ (_key * 6);
-				cout << "\na4\n";
-				pb[_x, _y]->Image = imgList->Images[5 + (_key * 6)];
-//				tableLayoutPanel1->Controls->Add(pb[_x, _y], _y, _x);
-			}
-
-		}
-
-		else if (_arr[_x][_y]._status == 0)
-		{
-			cout << "\na5\n";
-			if (_arr[_x][_y]._flag != 0)
-				MessageBox::Show("Flag not zero", "Internal Message");
-
-			_arr[_x][_y]._flag=0;
-
-			cout << (_key * 6);
-
-			pb[_x, _y]->Image = imgList->Images[(_key * 6)];
-//			tableLayoutPanel1->Controls->Add(pb[_x, _y], _y, _x);
-		}		
-
-		pb[_x, _y]->Refresh();
-		tb_lblCurrentPLayer->Refresh();
-		lblPlayer1Pcs->Refresh();
-		lblPlayer2Pcs->Refresh();
-		tbMoves->Refresh();
-	}
-
-private: System::Void btnNextMove_Click(System::Object^  sender, System::EventArgs^  e) {
-			 
-			 printf("btnNextMove_Click(System::Object^  sender, System::EventArgs^  e)\n");
-
-			 execute();
-}
-
-private: System::Void exitToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
-			 
-			 printf("exitToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e)\n");
-
-			 Application::Exit();
-}
-
-private: System::Void exitToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 
-			 printf("exitToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e)\n");
-
-			 execute();
-}
-
-private: System::Void menuWinner_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-
-			 if (Checkers.getLost() == 1)
-				 lblData->Text = "Player 2 Won!";
-			 else if (Checkers.getLost() == 2)
-				 lblData->Text = "Player 1 Won!";
-			 else if (Checkers.getIter()>=1)
-				 lblData->Text = "Game in Progress!";
-			 else
-				 lblData->Text = "It's a Draw!";
-}
-
-private: System::Void menuWinner_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-			 lblData->Text = "";
-}
-
-private: System::Void menuContinued_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-			 if (Checkers.getContinued() == false)
-				 lblData->Text = "Not Continued!";
-			 else
-			 {
-				 lblData->Text = "Continued from marked cell!";
-				 markCells(Checkers.getXCont(), Checkers.getYCont(), 2);
-			 }
-}
-
-private: System::Void menuContinued_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-			 lblData->Text = "";
-			 markCells(Checkers.getXCont(), Checkers.getYCont(), 0);
-}
-
-private: System::Void menuWrong2_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-			 lblData->Text = "Player 2 Wrong Moves: " + Convert::ToString(INVALID_MOVES_MAX-Checkers.getWrong2());
-}
-
-private: System::Void menuWrong2_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-			 lblData->Text = "";
-}
-
-private: System::Void menuWrong1_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
-			 lblData->Text = "Player 1 Wrong Moves: " + Convert::ToString(INVALID_MOVES_MAX - Checkers.getWrong1());
-}
-
-private: System::Void menuWrong1_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
-			 lblData->Text = "";
-}
-
-private: System::Void menuSoundOn_Click(System::Object^  sender, System::EventArgs^  e) {
-			 soundOn = true;
-			 menuSoundOn->Checked = true;
-			 menuSoundOff->Checked = false;
-}
-
-private: System::Void menuSoundOff_Click(System::Object^  sender, System::EventArgs^  e) {
-			 sound->Stop();
-			 soundOn = false;
-			 menuSoundOn->Checked = false;
-			 menuSoundOff->Checked = true;
-}
-private: System::Void menuKnockout_Click(System::Object^  sender, System::EventArgs^  e) {
-			 menuKnockout->Checked = true;
-			 menuSemiFinals->Checked = false;
-			 menuFinals->Checked = false;
-
-			 isKnockout = true;
-			 isSemiFinal = false;
-			 isFinal = false;
-
-			 lblStatus->Text = "Knockout!";
-
-			 if (soundOn)
-			 {
-				 sound->Stop();
-				 strcpy(_pathTemp, _path);
-				 path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\KnockoutLoad.wav"));
-				 sound = gcnew SoundPlayer(path_m);
-				 sound->PlayLooping();
-			 }
-}
-
-private: System::Void menuSemiFinals_Click(System::Object^  sender, System::EventArgs^  e) {
-			 menuKnockout->Checked = false;
-			 menuSemiFinals->Checked = true;
-			 menuFinals->Checked = false;
-
-			 isKnockout = false;
-			 isSemiFinal = true;
-			 isFinal = false;
-
-			 lblStatus->Text = "Semi Finals!";
-			 
-			 if (soundOn)
-			 {
-				 sound->Stop();
-				 strcpy(_pathTemp, _path);
-				 path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\SemiFinalsLoad.wav"));
-				 sound = gcnew SoundPlayer(path_m);
-				 sound->PlayLooping();
-			 }
-}
-
-private: System::Void menuFinals_Click(System::Object^  sender, System::EventArgs^  e) {
-			 menuKnockout->Checked = false;
-			 menuSemiFinals->Checked = false;
-			 menuFinals->Checked = true;
-
-			 isKnockout = false;
-			 isSemiFinal = false;
-			 isFinal = true;
-
-			 lblStatus->Text = "Finals!";
-			 
-			 if (soundOn)
-			 {
-				 sound->Stop();
-				 strcpy(_pathTemp, _path);
-				 path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\FinalsLoad.wav"));
-				 sound = gcnew SoundPlayer(path_m);
-				 sound->PlayLooping();
-				 
-			 }
-}
-
-	bool isMoveAvailable()
-	{
-		Checkers.getBoard(_arr);
-
-		if (Checkers.getContinued())
-			return true;
-
-		else 
-		{
-			if (Checkers.getPlayer() == 1)
-			{
 				for (int i = 0; i < 8; i++)
 				{
 					for (int j = 0; j < 8; j++)
 					{
-						if (_arr[i][j]._status == 1)
-						{
-							if (_arr[i + 1][j + 1]._status == 0 && (i + 1) < 8 && (j + 1) < 8)
-								return true;
-
-							if (_arr[i + 1][j + 1]._status == 2 && _arr[i + 2][j + 2]._status == 0 && (i + 2) < 8 && (j + 2) < 8)
-								return true;
-
-							if (_arr[i + 1][j - 1]._status == 0 && (i + 1) < 8 && (j - 1) >= 0)
-								return true;
-
-							if (_arr[i + 1][j - 1]._status == 2 && _arr[i + 2][j - 2]._status == 0 && (i + 2) < 8 && (j - 2) >= 0)
-								return true;
-
-							if (_arr[i - 1][j + 1]._status == 0 && _arr[i][j]._flag && (i - 1) >=0  && (j + 1) <= 8)
-								return true;
-
-							if (_arr[i - 1][j + 1]._status == 2 && _arr[i - 2][j + 2]._status == 0 && _arr[i][j]._flag && (i - 2) >= 0 && (j + 2) < 8)
-								return true;
-
-							if (_arr[i - 1][j - 1]._status == 0 && _arr[i][j]._flag && (i - 1) >= 0 && (j - 1) >= 0)
-								return true;
-
-							if (_arr[i - 1][j - 1]._status == 2 && _arr[i - 2][j - 2]._status == 0 && _arr[i][j]._flag && (i - 2) >= 0 && (j - 2) >= 0)
-								return true;
-
-						}
-						
+						cout << _arr[i][j]._status;
 					}
-				}
-				return false;
-		}
 
-		if (Checkers.getPlayer() == 2)
-		{
-			for (int i = 0; i < 8; i++)
-			{
-				for (int j = 0; j < 8; j++)
+					cout << "\n";
+				}
+
+				markCells(_move._xOld, _move._yOld, 0);
+				markCells(_move._xNew, _move._yNew, 0);
+
+				if (_deleted)
 				{
-					if (_arr[i][j]._status == 2)
-					{
-						if (_arr[i + 1][j + 1]._status == 0 && _arr[i][j]._flag && (i + 1) < 8 && (j + 1) < 8)
-							return true;
-
-						if (_arr[i + 1][j + 1]._status == 1 && _arr[i + 2][j + 2]._status == 0 && _arr[i][j]._flag && (i + 2) < 8 && (j + 2) < 8)
-							return true;
-
-						if (_arr[i + 1][j - 1]._status == 0 && (i + 1) < 8 && (j - 1) >= 0 && _arr[i][j]._flag)
-							return true;
-
-						if (_arr[i + 1][j - 1]._status == 1 && _arr[i + 2][j - 2]._status == 0 && (i + 2) < 8 && (j - 2) >= 0 && _arr[i][j]._flag)
-							return true;
-
-						if (_arr[i - 1][j + 1]._status == 0 && (i - 1) >= 0 && (j + 1) <= 8)
-							return true;
-
-						if (_arr[i - 1][j + 1]._status == 1 && _arr[i - 2][j + 2]._status == 0 && (i - 2) >= 0 && (j + 2) < 8)
-							return true;
-
-						if (_arr[i - 1][j - 1]._status == 0 && (i - 1) >= 0 && (j - 1) >= 0)
-							return true;
-
-						if (_arr[i - 1][j - 1]._status == 1 && _arr[i - 2][j - 2]._status == 0 && (i - 2) >= 0 && (j - 2) >= 0)
-							return true;
-
-					}
+					_deleted = false;
+					markCells(_xDel, _yDel, 0);
 				}
-			}
 
-			return false;
-		}
-		return false;
-	}			
-}
+				lblPlayer1Pcs->Text = Convert::ToString(Checkers.getRemaining1());
+				lblPlayer2Pcs->Text = Convert::ToString(Checkers.getRemaining2());
+				tbMoves->Text = Convert::ToString(ITERATION_MAX - Checkers.getIter());
 
-public:	 void playWinner()
-	{
-		if (soundOn)
-		{
-			if (isFinal)
-			{
-				sound->Stop();
-				strcpy(_pathTemp, _path);
-				path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\FinalsWin.wav"));
-				sound = gcnew SoundPlayer(path_m);
-				sound->Play();
-			}
+				if (Checkers.getPlayer() == 1)
+					tb_lblCurrentPLayer->Image = imgList2->Images[0];
+				else
+					tb_lblCurrentPLayer->Image = imgList2->Images[1];
 
-			if (isSemiFinal)
-			{
-				sound->Stop();
-				strcpy(_pathTemp, _path);
-				path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\SemiFinalsWin.wav"));
-				sound = gcnew SoundPlayer(path_m);
-				sound->Play();
-			}
 
-			if (isKnockout)
-			{
-				sound->Stop();
-				strcpy(_pathTemp, _path);
-				path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\KnockoutWin.wav"));
-				sound = gcnew SoundPlayer(path_m);
-				sound->Play();
-			}
-		}
-}
+				if (!isNextMove)
+				{
+					btnNextMove->Text = "Next Move!";
+					isNextMove = true;
+				}
 
-	void playDraw()
-	{
-		if (soundOn)
-		{
-			sound->Stop();
-			strcpy(_pathTemp, _path);
-			path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\Draw.wav"));
-			sound = gcnew SoundPlayer(path_m);
-			sound->Play();
-		}
 	}
 
+			void execute()
+			{
 
-};
+				printf("void execute()\n");
+
+				if (Checkers.getLost() == 1)
+				{
+					playWinner();
+					btnNextMove->Text = "Player 2 Won!";
+					MessageBox::Show("Player 1 has no pieces remaining. \nCongratulations, Player 2 Won!", "Game over!");
+					printf("Player 1 has no pieces remaining. \nCongratulations, Player 2 Won!\n");
+					btnNextMove->Enabled = false;
+					return;
+				}
+
+				if (Checkers.getLost() == 2)
+				{
+					playWinner();
+					btnNextMove->Text = "Player 1 Won!";
+					MessageBox::Show("Player 2 has no pieces remaining. \nCongratulations, Player 1 Won!", "Game over!");
+					printf("Player 2 has no pieces remaining. \nCongratulations, Player 1 Won!\n");
+					btnNextMove->Enabled = false;
+					return;
+				}
+
+				if (!isNextMove)
+				{
+					MessageBox::Show("Game started. All the best!", "Lets Start!");
+					sound->Stop();
+					soundPlaying = false;
+				}
+
+				cout << soundOn << soundPlaying;
+
+				if (soundOn)
+				{
+					if (!soundPlaying)
+					{
+						if (isFinal)
+						{
+							strcpy(_pathTemp, _path);
+							path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\FinalsPlay.wav"));
+							sound = gcnew SoundPlayer(path_m);
+							sound->PlayLooping();
+						}
+
+						else if (isSemiFinal)
+						{
+							strcpy(_pathTemp, _path);
+							path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\SemiFinalsPlay.wav"));
+							sound = gcnew SoundPlayer(path_m);
+							sound->PlayLooping();
+						}
+
+						else if (isKnockout)
+						{
+							strcpy(_pathTemp, _path);
+							path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\KnockoutPlay.wav"));
+							sound = gcnew SoundPlayer(path_m);
+							sound->PlayLooping();
+						}
+
+						soundPlaying = true;
+					}
+				}
+				else
+				{
+					if (soundPlaying)
+					{
+						sound->Stop();
+						soundPlaying = false;
+					}
+				}
+
+				if (!isMoveAvailable())
+				{
+					btnNextMove->Enabled = false;
+					if (Checkers.getPlayer() == 1)
+					{
+						playWinner();
+						btnNextMove->Text = "Player 2 Won!";
+						MessageBox::Show("Player 1 has no valid move remaining. \nCongratulations, Player 2 Won!", "Game over!");
+						printf("Player 1 has no valid move remaining. \nCongratulations, Player 2 Won!\n");
+						Checkers.setLost(1);
+						return;
+					}
+
+					if (Checkers.getPlayer() == 2)
+					{
+						playWinner();
+						btnNextMove->Text = "Player 1 Won!";
+						MessageBox::Show("Player 2 has no valid move remaining. \nCongratulations, Player 1 Won!", "Game over!");
+						printf("Player 2 has no valid move remaining. \nCongratulations, Player 1 Won!\n");
+						Checkers.setLost(2);
+						return;
+					}
+
+					else
+						return assert(0);
+
+				}
+
+				if (Checkers.getIter())
+				{
+					Checkers.getBoard(_arr);
+
+					for (int i = 0; i < 8; i++)
+					{
+						for (int j = 0; j < 8; j++)
+						{
+							cout << _arr[i][j]._status << " ";
+						}
+						cout << "\n";
+					}
+
+					(*arg).copyBoard(_arr);
+					(*arg)._pContinued = Checkers.getContinued();
+					(*arg)._pIter = Checkers.getIter();
+					(*arg)._pRemaining = Checkers.getRemaining();
+					(*arg)._pWrong = Checkers.getWrong();
+					(*arg)._pXCont = Checkers.getXCont();
+					(*arg)._pYCont = Checkers.getYCont();
+
+
+					if (Checkers.getPlayer() == 1)
+					{
+						printf("Calling thread for player1\n");
+
+						cout << "Thread Handle: " << (hThread = (HANDLE)_beginthread(Player_1Wrapper, 0, (void*)arg)) << "\n";
+
+						if (WaitForSingleObject(hThread,TIME_MAX+5) != WAIT_OBJECT_0)
+						{
+							playWinner();
+							btnNextMove->Enabled = false;
+							btnNextMove->Text = "Player 2 Won!";
+							MessageBox::Show("Time limit exceeded by Player 1.\nCongratulations, Player 2 won!!!", "Game Over!!");
+							printf("Time limit exceeded by Player 1.\nCongratulations, Player 2 won!!!\n");
+							TerminateThread(hThread, 0);
+							CloseHandle(hThread);
+							Checkers.setLost(1);
+							return;
+						}
+
+						_deleted = false;
+
+						markCells(_move._xOld, _move._yOld, 1);
+						markCells(_move._xNew, _move._yNew, 2);
+
+						if (!Checkers.validateMove(_move._xNew, _move._yNew, _move._xOld, _move._yOld))
+						{
+
+							if (Checkers.getLost() == 1)
+							{
+								playWinner();
+								btnNextMove->Text = "Player 2 Won!";
+								MessageBox::Show("Invalid Move by Player 1. Maximum number of invalid moves reached.\nCongratulations, Player 2 won", "Game Over!!");
+								printf("Invalid Move by Player 1. Maximum number of invalid moves reached.\nCongratulations, Player 2 won\n");
+								btnNextMove->Enabled = false;
+								updateScreen();
+								Checkers.setLost(1);
+								return;
+							}
+
+							MessageBox::Show("Invalid Move by Player 1.", "Warning!!");
+							printf("Invalid Move by Player 1.\n");
+							updateScreen();
+							return;
+						}
+
+						cout << "Valid Move for player 1\n";
+						Sleep(DISPLAY_TIME_VALID);
+						updateScreen();
+						return;
+
+					}
+
+					else if (Checkers.getPlayer() == 2)
+					{
+						printf("Calling thread for player2\n");
+
+						cout << "Thread handle: " << (hThread = (HANDLE)_beginthread(Player_2Wrapper, 0, (void*)arg)) << "\n";
+
+						if (WaitForSingleObject(hThread,TIME_MAX+5)!= WAIT_OBJECT_0)
+						{
+							playWinner();
+							btnNextMove->Enabled = false;
+							btnNextMove->Text = "Player 1 Won!";
+							MessageBox::Show("Time limit exceeded by Player 2.\nCongratulations, Player 1 won!!! ", "Game Over!!");
+							printf("Time limit exceeded by Player 2.\nCongratulations, Player 1 won!!! \n");
+							TerminateThread(hThread, 0);
+							CloseHandle(hThread);
+							Checkers.setLost(2);
+							return;
+						}
+
+						_deleted = false;
+						
+						markCells(_move._xOld, _move._yOld, 1);
+						markCells(_move._xNew, _move._yNew, 2);
+
+						if (!Checkers.validateMove(_move._xNew, _move._yNew, _move._xOld, _move._yOld))
+						{
+							if (Checkers.getLost() == 2)
+							{
+								playWinner();
+								btnNextMove->Text = "Player 1 Won!";
+								btnNextMove->Enabled = false;
+								MessageBox::Show("Invalid Move by Player 2. Maximum number of invalid moves reached.\nCongratulations, Player 1 won", "Game Over!!");
+								printf("Invalid Move by Player 2. Maximum number of invalid moves reached.\nCongratulations, Player 1 won\n");
+								updateScreen();
+								return;
+							}
+
+							MessageBox::Show("Invalid Move by Player 2.", "Warning!!");
+							printf("Invalid Move by Player 2.\n");
+							updateScreen();
+							return;
+						}
+
+						cout << "Valid Move for player 2\n";
+						Sleep(DISPLAY_TIME_VALID);
+						updateScreen();
+						return;
+					}
+
+					else
+						return assert(0);
+				}
+
+				btnNextMove->Enabled = false;
+
+				if (Checkers.getRemaining1() > Checkers.getRemaining2())
+				{
+					playWinner();
+					btnNextMove->Text = "Player 2 Won!";
+					MessageBox::Show("Player 1 has more pieces remaining. \nCongratulations, Player 2 Won!", "Game over!");
+					printf("Player 1 has more pieces remaining. \nCongratulations, Player 2 Won!\n");
+					Checkers.setLost(1);
+				}
+
+				else if (Checkers.getRemaining1()<Checkers.getRemaining2())
+				{
+					playWinner();
+					btnNextMove->Text = "Player 1 Won!";
+					MessageBox::Show("Player 2 has more pieces remaining. \nCongratulations, Player 1 Won!", "Game over!");
+					printf("Player 2 has more pieces remaining. \nCongratulations, Player 1 Won!\n");
+					Checkers.setLost(2);
+				}
+
+				else if (Checkers.getWrong1()>Checkers.getWrong2())
+				{
+					playWinner();
+					btnNextMove->Text = "Player 2 Won!";
+					MessageBox::Show("Player 2 had less wrong moves. \nCongratulations, Player 2 Won!", "Game over!");
+					printf("Player 2 had less wrong moves. \nCongratulations, Player 2 Won!\n");
+					Checkers.setLost(1);
+				}
+
+				else if (Checkers.getWrong1() < Checkers.getWrong2())
+				{
+					playWinner();
+					btnNextMove->Text = "Player 1 Won!";
+					MessageBox::Show("Player 1 had less wrong moves. \nCongratulations, Player 1 Won!", "Game over!");
+					printf("Player 1 had less wrong moves. \nCongratulations, Player 1 Won!\n");
+					Checkers.setLost(2);
+				}
+
+				else
+				{
+					playDraw();
+					btnNextMove->Text = "It's a Draw!";
+					MessageBox::Show("Maximum moves reached. \nWell Played! It's a draw!", "Game over!");
+					printf("Maximum moves reached. \nWell Played! It's a draw!\n");
+				}
+			}
+
+			void markCells(int _x, int _y, int _key)
+			{
+				Checkers.getBoard(_arr);
+				printf("void markCells(int _x(%d), int _y(%d), int _key(%d))\n", _x, _y, _key);
+
+				if (_x<0 || _y<0 || _key<0 || _x>7 || _y>7 || _key>2)
+				{
+					MessageBox::Show("Indexes recieved are out of bounds", "Warning");
+					return;
+				}
+
+				if ((_x + _y) % 2 == 1)
+					pb[_x, _y]->Image = imgList->Images[3 + (_key * 6)];
+
+				else if (_arr[_x][_y]._status == 1)
+				{
+					if (_arr[_x][_y]._flag == false)
+					{
+						cout << 1 + (_key * 6);
+						cout << "\na1\n";
+						pb[_x, _y]->Image = imgList->Images[1 + (_key * 6)];
+						//				tableLayoutPanel1->Controls->Add(pb[_x, _y], _y, _x);
+					}
+					else
+					{
+						cout << 2 + (_key * 6);
+						cout << "\na2\n";
+						pb[_x, _y]->Image = imgList->Images[2 + (_key * 6)];
+						//				tableLayoutPanel1->Controls->Add(pb[_x, _y], _y, _x);
+					}
+
+				}
+
+				else if (_arr[_x][_y]._status == 2)
+				{
+					if (_arr[_x][_y]._flag == false)
+					{
+						cout << 4 + (_key * 6);
+						cout << "\na3\n";
+						pb[_x, _y]->Image = imgList->Images[4 + (_key * 6)];
+						//				tableLayoutPanel1->Controls->Add(pb[_x, _y], _y, _x);
+					}
+					else
+					{
+						cout << 5 + (_key * 6);
+						cout << "\na4\n";
+						pb[_x, _y]->Image = imgList->Images[5 + (_key * 6)];
+						//				tableLayoutPanel1->Controls->Add(pb[_x, _y], _y, _x);
+					}
+
+				}
+
+				else if (_arr[_x][_y]._status == 0)
+				{
+					cout << "\na5\n";
+					if (_arr[_x][_y]._flag != 0)
+						MessageBox::Show("Flag not zero", "Internal Message");
+
+					_arr[_x][_y]._flag = 0;
+
+					cout << (_key * 6);
+
+					pb[_x, _y]->Image = imgList->Images[(_key * 6)];
+					//			tableLayoutPanel1->Controls->Add(pb[_x, _y], _y, _x);
+				}
+
+				pb[_x, _y]->Refresh();
+				tb_lblCurrentPLayer->Refresh();
+				lblPlayer1Pcs->Refresh();
+				lblPlayer2Pcs->Refresh();
+				tbMoves->Refresh();
+			}
+
+	private: System::Void btnNextMove_Click(System::Object^  sender, System::EventArgs^  e) {
+
+				 printf("btnNextMove_Click(System::Object^  sender, System::EventArgs^  e)\n");
+
+				 execute();
+	}
+
+	private: System::Void exitToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
+
+				 printf("exitToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e)\n");
+
+				 Application::Exit();
+	}
+
+	private: System::Void exitToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+				 printf("exitToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e)\n");
+
+				 execute();
+	}
+
+	private: System::Void menuWinner_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+
+				 if (Checkers.getLost() == 1)
+					 menuWinner->Text = "Player 2 Won!";
+				 else if (Checkers.getLost() == 2)
+					 menuWinner->Text = "Player 1 Won!";
+				 else if (Checkers.getIter() >= 1)
+					 menuWinner->Text = "Game in Progress!";
+				 else
+					 menuWinner->Text = "It's a Draw!";
+	}
+
+	private: System::Void menuWinner_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
+				 menuWinner->Text = "&Winner";
+	}
+
+	private: System::Void menuContinued_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+				 if (Checkers.getContinued() == false)
+					 menuContinued->Text = "Not Continued!";
+				 else
+				 {
+					 menuContinued->Text = "Continued from marked cell!";
+					 markCells(Checkers.getXCont(), Checkers.getYCont(), 2);
+				 }
+	}
+
+	private: System::Void menuContinued_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
+				 menuContinued->Text = "&Continued Chance";
+				 markCells(Checkers.getXCont(), Checkers.getYCont(), 0);
+	}
+
+	private: System::Void menuWrong2_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+				 menuWrong2->Text = "Player &2 Wrong Moves: " + Convert::ToString(INVALID_MOVES_MAX - Checkers.getWrong2());
+	}
+
+	private: System::Void menuWrong2_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
+				 menuWrong2->Text = "Player &2 Wrong Moves";
+	}
+
+	private: System::Void menuWrong1_MouseEnter(System::Object^  sender, System::EventArgs^  e) {
+				 menuWrong1->Text = "Player &1 Wrong Moves: " + Convert::ToString(INVALID_MOVES_MAX - Checkers.getWrong1());
+	}
+
+	private: System::Void menuWrong1_MouseLeave(System::Object^  sender, System::EventArgs^  e) {
+				 menuWrong1->Text = "Player &1 Wrong Moves";
+	}
+
+	private: System::Void menuSoundOn_Click(System::Object^  sender, System::EventArgs^  e) {
+				 soundOn = true;
+				 menuSoundOn->Checked = true;
+				 menuSoundOff->Checked = false;
+	}
+
+	private: System::Void menuSoundOff_Click(System::Object^  sender, System::EventArgs^  e) {
+				 sound->Stop();
+				 soundOn = false;
+				 menuSoundOn->Checked = false;
+				 menuSoundOff->Checked = true;
+	}
+	private: System::Void menuKnockout_Click(System::Object^  sender, System::EventArgs^  e) {
+				 menuKnockout->Checked = true;
+				 menuSemiFinals->Checked = false;
+				 menuFinals->Checked = false;
+
+				 isKnockout = true;
+				 isSemiFinal = false;
+				 isFinal = false;
+
+				 lblStatus->Text = "Knockout!";
+
+				 if (soundOn)
+				 {
+					 sound->Stop();
+					 strcpy(_pathTemp, _path);
+					 path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\KnockoutLoad.wav"));
+					 sound = gcnew SoundPlayer(path_m);
+					 sound->PlayLooping();
+				 }
+	}
+
+	private: System::Void menuSemiFinals_Click(System::Object^  sender, System::EventArgs^  e) {
+				 menuKnockout->Checked = false;
+				 menuSemiFinals->Checked = true;
+				 menuFinals->Checked = false;
+
+				 isKnockout = false;
+				 isSemiFinal = true;
+				 isFinal = false;
+
+				 lblStatus->Text = "Semi Finals!";
+
+				 if (soundOn)
+				 {
+					 sound->Stop();
+					 strcpy(_pathTemp, _path);
+					 path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\SemiFinalsLoad.wav"));
+					 sound = gcnew SoundPlayer(path_m);
+					 sound->PlayLooping();
+				 }
+	}
+
+	private: System::Void menuFinals_Click(System::Object^  sender, System::EventArgs^  e) {
+				 menuKnockout->Checked = false;
+				 menuSemiFinals->Checked = false;
+				 menuFinals->Checked = true;
+
+				 isKnockout = false;
+				 isSemiFinal = false;
+				 isFinal = true;
+
+				 lblStatus->Text = "Finals!";
+
+				 if (soundOn)
+				 {
+					 sound->Stop();
+					 strcpy(_pathTemp, _path);
+					 path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\FinalsLoad.wav"));
+					 sound = gcnew SoundPlayer(path_m);
+					 sound->PlayLooping();
+
+				 }
+	}
+
+			 bool isMoveAvailable()
+			 {
+				 Checkers.getBoard(_arr);
+
+				 if (Checkers.getContinued())
+					 return true;
+
+				 else
+				 {
+					 if (Checkers.getPlayer() == 1)
+					 {
+						 for (int i = 0; i < 8; i++)
+						 {
+							 for (int j = 0; j < 8; j++)
+							 {
+								 if (_arr[i][j]._status == 1)
+								 {
+									 if (_arr[i + 1][j + 1]._status == 0 && (i + 1) < 8 && (j + 1) < 8)
+										 return true;
+
+									 if (_arr[i + 1][j + 1]._status == 2 && _arr[i + 2][j + 2]._status == 0 && (i + 2) < 8 && (j + 2) < 8)
+										 return true;
+
+									 if (_arr[i + 1][j - 1]._status == 0 && (i + 1) < 8 && (j - 1) >= 0)
+										 return true;
+
+									 if (_arr[i + 1][j - 1]._status == 2 && _arr[i + 2][j - 2]._status == 0 && (i + 2) < 8 && (j - 2) >= 0)
+										 return true;
+
+									 if (_arr[i - 1][j + 1]._status == 0 && _arr[i][j]._flag && (i - 1) >= 0 && (j + 1) <= 8)
+										 return true;
+
+									 if (_arr[i - 1][j + 1]._status == 2 && _arr[i - 2][j + 2]._status == 0 && _arr[i][j]._flag && (i - 2) >= 0 && (j + 2) < 8)
+										 return true;
+
+									 if (_arr[i - 1][j - 1]._status == 0 && _arr[i][j]._flag && (i - 1) >= 0 && (j - 1) >= 0)
+										 return true;
+
+									 if (_arr[i - 1][j - 1]._status == 2 && _arr[i - 2][j - 2]._status == 0 && _arr[i][j]._flag && (i - 2) >= 0 && (j - 2) >= 0)
+										 return true;
+
+								 }
+
+							 }
+						 }
+						 return false;
+					 }
+
+					 if (Checkers.getPlayer() == 2)
+					 {
+						 for (int i = 0; i < 8; i++)
+						 {
+							 for (int j = 0; j < 8; j++)
+							 {
+								 if (_arr[i][j]._status == 2)
+								 {
+									 if (_arr[i + 1][j + 1]._status == 0 && _arr[i][j]._flag && (i + 1) < 8 && (j + 1) < 8)
+										 return true;
+
+									 if (_arr[i + 1][j + 1]._status == 1 && _arr[i + 2][j + 2]._status == 0 && _arr[i][j]._flag && (i + 2) < 8 && (j + 2) < 8)
+										 return true;
+
+									 if (_arr[i + 1][j - 1]._status == 0 && (i + 1) < 8 && (j - 1) >= 0 && _arr[i][j]._flag)
+										 return true;
+
+									 if (_arr[i + 1][j - 1]._status == 1 && _arr[i + 2][j - 2]._status == 0 && (i + 2) < 8 && (j - 2) >= 0 && _arr[i][j]._flag)
+										 return true;
+
+									 if (_arr[i - 1][j + 1]._status == 0 && (i - 1) >= 0 && (j + 1) <= 8)
+										 return true;
+
+									 if (_arr[i - 1][j + 1]._status == 1 && _arr[i - 2][j + 2]._status == 0 && (i - 2) >= 0 && (j + 2) < 8)
+										 return true;
+
+									 if (_arr[i - 1][j - 1]._status == 0 && (i - 1) >= 0 && (j - 1) >= 0)
+										 return true;
+
+									 if (_arr[i - 1][j - 1]._status == 1 && _arr[i - 2][j - 2]._status == 0 && (i - 2) >= 0 && (j - 2) >= 0)
+										 return true;
+
+								 }
+							 }
+						 }
+
+						 return false;
+					 }
+					 return false;
+				 }
+			 }
+
+	public:	 void playWinner()
+	{
+				 if (soundOn)
+				 {
+					 if (isFinal)
+					 {
+						 sound->Stop();
+						 strcpy(_pathTemp, _path);
+						 path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\FinalsWin.wav"));
+						 sound = gcnew SoundPlayer(path_m);
+						 sound->Play();
+					 }
+
+					 if (isSemiFinal)
+					 {
+						 sound->Stop();
+						 strcpy(_pathTemp, _path);
+						 path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\SemiFinalsWin.wav"));
+						 sound = gcnew SoundPlayer(path_m);
+						 sound->Play();
+					 }
+
+					 if (isKnockout)
+					 {
+						 sound->Stop();
+						 strcpy(_pathTemp, _path);
+						 path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\KnockoutWin.wav"));
+						 sound = gcnew SoundPlayer(path_m);
+						 sound->Play();
+					 }
+				 }
+	}
+
+			 void playDraw()
+			 {
+				 if (soundOn)
+				 {
+					 sound->Stop();
+					 strcpy(_pathTemp, _path);
+					 path_m = gcnew String(strcat(_pathTemp, "\\media\\music\\Draw.wav"));
+					 sound = gcnew SoundPlayer(path_m);
+					 sound->Play();
+				 }
+			 }
+
+
+	};
 }
+//OK

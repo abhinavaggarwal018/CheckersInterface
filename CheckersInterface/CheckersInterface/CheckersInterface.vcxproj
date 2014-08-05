@@ -82,6 +82,7 @@
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
@@ -90,6 +91,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Checkers\Project1\Project1.vcxproj.filters" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="header_working.txt" />
+    <Text Include="Text.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CheckersInterface.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
